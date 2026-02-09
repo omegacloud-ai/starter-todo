@@ -1,0 +1,24 @@
+# dependencies
+/node_modules
+.pnpm-store/
+
+# build
+/dist
+
+# env
+.env*
+.claude
+
+# misc
+.DS_Store
+*.pem
+*.tsbuildinfo
+*.local
+
+# database
+data.db
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+.pnpm-debug.log*
