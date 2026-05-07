@@ -44,19 +44,21 @@ export function TodoItem({ todo, onToggled, onDeleted }: Props) {
       <div className="todo-item-card">
         <input
           type="checkbox"
+          id={`todo-${todo.id}`}
           checked={!!todo.completed}
           onChange={handleToggle}
           disabled={pending}
           className="todo-checkbox"
         />
-        <span
+        <label
+          htmlFor={`todo-${todo.id}`}
           className={clsx(
             "todo-item-text type-body text-ink",
             todo.completed && "line-through opacity-40"
           )}
         >
           {todo.text}
-        </span>
+        </label>
         <button
           onClick={handleDelete}
           disabled={pending}
