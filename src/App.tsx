@@ -26,51 +26,61 @@ export default function App() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
-      <div className="relative">
-        <img
-          src="/desk.jpg"
-          alt="Desk workspace"
-          className="w-full h-48 object-cover"
-        />
-        <div className="absolute inset-0 bg-black/20" />
-      </div>
-      <div className="max-w-2xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <header className="mb-8 text-center">
-          <h1 className="text-4xl font-bold text-foreground mb-2">Tasks</h1>
-          <p className="text-muted-foreground">Keep track of your daily goals</p>
-        </header>
+    <main className="min-h-screen bg-canvas">
+      <div className="app-container">
+        <div className="app-header">
+          <span className="type-caption text-ink block">
+            OmegaCloud
+          </span>
+          <h1 className="mt-md type-display-lg text-ink">
+            Tasks
+          </h1>
+        </div>
 
-        <AddTodoForm onTodoAdded={(todo) => setTodos((prev) => [todo, ...prev])} />
+        <div className="task-panel">
+          <AddTodoForm
+            onTodoAdded={(todo) => setTodos((prev) => [todo, ...prev])}
+          />
 
-        {loading ? (
-          <div className="text-center py-12 text-muted-foreground">Loading...</div>
-        ) : error ? (
-          <div className="text-center py-12 text-danger">
-            <p>{error}</p>
-            <button
-              onClick={fetchTodos}
-              className="mt-4 text-primary hover:text-primary-hover"
-            >
-              Retry
-            </button>
-          </div>
-        ) : todos.length === 0 ? (
-          <div className="text-center py-12 text-muted-foreground">
-            No tasks yet. Add one above!
-          </div>
-        ) : (
-          <div className="space-y-1">
-            {todos.map((todo) => (
-              <TodoItem
-                key={todo.id}
-                todo={todo}
-                onToggled={(updated) => setTodos((prev) => prev.map((t) => (t.id === updated.id ? updated : t)))}
-                onDeleted={(id) => setTodos((prev) => prev.filter((t) => t.id !== id))}
-              />
-            ))}
-          </div>
-        )}
+          {loading ? (
+            <p className="type-caption text-ink/50 py-md">
+              Loading…
+            </p>
+          ) : error ? (
+            <div className="py-md">
+              <p className="type-body-sm text-danger">
+                {error}
+              </p>
+              <button
+                onClick={fetchTodos}
+                className="mt-sm type-link text-ink underline underline-offset-2"
+              >
+                Retry
+              </button>
+            </div>
+          ) : todos.length === 0 ? (
+            <p className="type-caption text-ink/50 py-md">
+              No tasks yet
+            </p>
+          ) : (
+            <div className="todo-list">
+              {todos.map((todo) => (
+                <TodoItem
+                  key={todo.id}
+                  todo={todo}
+                  onToggled={(updated) =>
+                    setTodos((prev) =>
+                      prev.map((t) => (t.id === updated.id ? updated : t)),
+                    )
+                  }
+                  onDeleted={(id) =>
+                    setTodos((prev) => prev.filter((t) => t.id !== id))
+                  }
+                />
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </main>
   );

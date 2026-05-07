@@ -32,25 +32,27 @@ export function AddTodoForm({ onTodoAdded }: Props) {
   };
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit} className="mb-8">
-      <div className="relative">
+    <form ref={formRef} onSubmit={handleSubmit} className="mb-lg">
+      <div className="todo-form-row">
         <input
           type="text"
           name="text"
           placeholder="What needs to be done?"
           maxLength={100}
-          className="w-full p-4 pr-16 rounded-xl border-none shadow-sm bg-surface text-lg focus:ring-2 focus:ring-primary placeholder:text-muted-foreground"
+          className="text-input min-w-0 flex-1 placeholder:text-ink/40 focus:outline-none focus:ring-1 focus:ring-ink/40"
           required
         />
         <button
           type="submit"
           disabled={submitting}
-          className="absolute right-2 top-1/2 -translate-y-1/2 px-4 py-2 bg-primary hover:bg-primary-hover disabled:bg-primary-muted text-primary-foreground font-medium rounded-lg transition-colors"
+          className="button-primary transition-opacity disabled:opacity-40 whitespace-nowrap"
         >
-          {submitting ? "..." : "Add"}
+          {submitting ? "Adding…" : "Add task"}
         </button>
       </div>
-      {error && <p className="mt-2 text-sm text-danger">{error}</p>}
+      {error && (
+        <p className="mt-xs type-body-sm text-danger">{error}</p>
+      )}
     </form>
   );
 }
