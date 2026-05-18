@@ -40,7 +40,7 @@ export function AddTodoForm({ onTodoAdded }: Props) {
           aria-label="New task"
           placeholder="What needs to be done?"
           maxLength={100}
-          className="text-input min-w-0 flex-1 placeholder:text-ink/40 focus:outline-none focus:ring-1 focus:ring-ink/40"
+          className="text-input min-w-0 flex-1 placeholder:text-muted-ink/70 focus:outline-none focus:ring-1 focus:ring-primary"
           required
         />
         <button

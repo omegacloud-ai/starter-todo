@@ -26,13 +26,13 @@ export default function App() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-canvas">
+    <main className="app-shell">
       <div className="app-container">
         <div className="app-header">
-          <span className="type-caption text-ink block">
+          <span className="type-caption block text-inverse-ink/80">
             OmegaCloud
           </span>
-          <h1 className="mt-md type-display-lg text-ink">
+          <h1 className="mt-md type-display-xl text-inverse-ink">
             Tasks
           </h1>
         </div>

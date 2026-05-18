@@ -14,7 +14,7 @@ export default defineConfig({
     host: true,
     allowedHosts: true,
     proxy: {
-      "/api": "http://localhost:3001",
+      "/api": "http://localhost:3003",
     },
     watch: {
       ignored: ["**/node_modules/**", "**/dist/**", "**/.git/**"],
