@@ -1,0 +1,30 @@
+omega:
+  version: 1
+
+project:
+  name: omegacloud-starter
+
+runtime:
+  job_type: api
+  language: node
+  framework: vite
+  server: express
+  package_manager: pnpm
+
+  dependencies:
+    better-sqlite3: "^12.4.6"
+    clsx: "^2.1.1"
+    dotenv: "^17.2.4"
+    express: "^5.2.1"
+    react: "19.2.0"
+    react-dom: "19.2.0"
+    tailwind-merge: "^3.4.0"
+
+  service_dependencies:
+    sqlite: better-sqlite3
+
+  setup_cmd: []
+  build_cmd: ["pnpm install"]
+  run_cmd: ["pnpm run dev"]
+
+  port: 3000
