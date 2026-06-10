@@ -17,7 +17,13 @@ export default defineConfig({
       "/api": "http://localhost:3003",
     },
     watch: {
-      ignored: ["**/node_modules/**", "**/dist/**", "**/.git/**"],
+      ignored: [
+        "**/node_modules/**", 
+        "**/dist/**", 
+        "**/.git/**",
+        "**/.claude/**",
+        "**/.pnpm-store/**",        
+      ],
     },
   },
 });
